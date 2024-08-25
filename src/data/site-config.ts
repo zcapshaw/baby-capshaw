@@ -11,6 +11,7 @@ export type Link = {
 
 export type Hero = {
     title?: string;
+    subtitle?: string;
     text?: string;
     image?: Image;
     actions?: Link[];
@@ -38,9 +39,9 @@ export type SiteConfig = {
 };
 
 const siteConfig: SiteConfig = {
-    title: 'Dante',
-    subtitle: 'Minimal Astro.js theme',
-    description: 'Astro.js and Tailwind CSS theme for blog and portfolio by justgoodui.com',
+    title: `It's a boy!`,
+    subtitle: 'Celebrate with us on Octboer 26th, 2024',
+    description: 'Event details for the Capshaw baby shower',
     image: {
         src: '/dante-preview.jpg',
         alt: 'Dante - Astro.js and Tailwind CSS theme'
@@ -51,69 +52,45 @@ const siteConfig: SiteConfig = {
             href: '/'
         },
         {
-            text: 'Projects',
-            href: '/projects'
+            text: 'Event details',
+            href: '#event-details'
         },
         {
-            text: 'Blog',
-            href: '/blog'
+            text: 'RSVP',
+            href: '#rsvp'
         },
         {
-            text: 'Tags',
-            href: '/tags'
+            text: 'Registry',
+            href: '#gifts'
         }
     ],
     footerNavLinks: [
         {
-            text: 'About',
-            href: '/about'
+            text: 'Home',
+            href: '/'
         },
         {
-            text: 'Contact',
-            href: '/contact'
-        },
-        {
-            text: 'Terms',
-            href: '/terms'
-        },
-        {
-            text: 'Download theme',
-            href: 'https://github.com/JustGoodUI/dante-astro-theme'
+            text: 'Event details',
+            href: '#event-details'
         }
     ],
-    socialLinks: [
-        {
-            text: 'Dribbble',
-            href: 'https://dribbble.com/'
-        },
-        {
-            text: 'Instagram',
-            href: 'https://instagram.com/'
-        },
-        {
-            text: 'X/Twitter',
-            href: 'https://twitter.com/'
-        }
-    ],
+
     hero: {
-        title: 'Hi There & Welcome to My Corner of the Web!',
-        text: "I'm **Ethan Donovan**, a web developer at Amazing Studio, dedicated to the realms of collaboration and artificial intelligence. My approach involves embracing intuition, conducting just enough research, and leveraging aesthetics as a catalyst for exceptional products. I have a profound appreciation for top-notch software, visual design, and the principles of product-led growth. Feel free to explore some of my coding endeavors on <a href='https://github.com/JustGoodUI/dante-astro-theme'>GitHub</a> or follow me on <a href='https://twitter.com/justgoodui'>Twitter/X</a>.",
+        title: `It's a boy!`,
+        subtitle: 'Celebrate with us on October 26th, 2024',
+        text: `**Dear Friends and Family**, </br>We're thrilled to invite you to join us in celebrating the upcoming arrival of our first child! </br></br> We look forward to creating new memories with you as we prepare to welcome the newest member of the Capshaw family. Thank you for being part of our journey! </br></br>With love and gratitude, </br>Zach & Kat Capshaw`,
         image: {
-            src: '/hero.jpeg',
-            alt: 'A person sitting at a desk in front of a computer'
+            src: '/dogs.webp',
+            alt: 'dogs'
         },
         actions: [
             {
-                text: 'Get in Touch',
+                text: 'RSVP',
                 href: '/contact'
             }
         ]
     },
-    subscribe: {
-        title: 'Subscribe to Dante Newsletter',
-        text: 'One update per week. All the latest posts directly in your inbox.',
-        formUrl: '#'
-    },
+
     postsPerPage: 8,
     projectsPerPage: 8
 };

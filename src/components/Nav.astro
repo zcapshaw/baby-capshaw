@@ -33,9 +33,7 @@ const navLinks = siteConfig.headerNavLinks || [];
             </div>
         )
     }
-    <div class="absolute right-0 top-4 z-10 md:top-8">
-        <ThemeToggle />
-    </div>
+    <div class="absolute right-0 top-4 z-10 md:top-8"></div>
 </nav>
 
 <style>
@@ -86,17 +84,14 @@ const navLinks = siteConfig.headerNavLinks || [];
 </style>
 
 <script>
-    function menuToggle() {
-        const menu = document.querySelector('.menu');
-        const menuToggleBtn = document.querySelector('.menu-toggle');
-        menuToggleBtn?.addEventListener('click', () => {
-            const isMenuExpanded = menuToggleBtn.getAttribute('aria-expanded') === 'true';
-            menuToggleBtn.classList.toggle('is-active');
-            menuToggleBtn.setAttribute('aria-expanded', isMenuExpanded ? 'false' : 'true');
-            menuToggleBtn.setAttribute('aria-label', isMenuExpanded ? 'Open Menu' : 'Close Menu');
-            menu?.classList.toggle('is-visible');
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const anchor = e.target as HTMLAnchorElement;
+            document.querySelector(anchor.getAttribute('href')!)?.scrollIntoView({
+                behavior: 'smooth'
+            });
         });
-    }
-    menuToggle();
-    document.addEventListener('astro:after-swap', menuToggle);
+    });
 </script>

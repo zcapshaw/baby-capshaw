@@ -7,6 +7,7 @@ import PostPreview from '../components/PostPreview.astro';
 import ProjectPreview from '../components/ProjectPreview.astro';
 import siteConfig from '../data/site-config';
 import { sortItemsByDateDesc } from '../utils/data-utils';
+import ArrowRight from '../icons/ArrowRight.astro';
 
 const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
 const featuredPosts = posts.filter(({ data }) => data.isFeatured);
@@ -17,30 +18,89 @@ const featuredProjects = projects.filter(({ data }) => data.isFeatured);
 
 <BaseLayout description={siteConfig.description} image={siteConfig.image}>
     <Hero />
-    {
-        featuredProjects?.length > 0 && (
-            <div class="mb-16 sm:mb-24">
-                <h2 class="mb-12 text-xl font-serif italic sm:mb-16 sm:text-2xl">Projects</h2>
-                {featuredProjects.map((project) => (
-                    <ProjectPreview project={project} class="mb-10 sm:mb-12" headingLevel="h3" />
-                ))}
-                <div class="mt-12 sm:mt-16">
-                    <Button href="/projects">View All Projects</Button>
-                </div>
+
+    <div class="mb-16 sm:mb-24" id="event-details">
+        <h2 class="mb-8 text-xl font-serif italic sm:mb-12 sm:text-2xl">Event Details</h2>
+        <h3
+            class="text-xl leading-tight font-serif font-medium group-hover:underline group-hover:decoration-dashed group-hover:underline-offset-4 group-hover:decoration-1 sm:text-2xl"
+        >
+            Format
+        </h3>
+        <div class="mt-1 leading-normal">Open house style (guests may come and go throughout)</div>
+        <div class="mt-3 leading-normal">A light lunch & open bar will be provided</div>
+
+        <h3
+            class="mt-8 text-xl leading-tight font-serif font-medium group-hover:underline group-hover:decoration-dashed group-hover:underline-offset-4 group-hover:decoration-1 sm:text-2xl"
+        >
+            When
+        </h3>
+        <div class="mt-1 leading-normal">Saturday, October 26th</div>
+        <div class="mt-3 leading-normal">11:30am to 2:30pm</div>
+        <a class:list={['flex justify-between items-start gap-8 group']} href={`https://maps.app.goo.gl/aH8XJxkfYtXfjQpk6`} target="_blank">
+            <div class="grow mt-8">
+                <h3
+                    class="text-xl leading-tight font-serif font-medium group-hover:underline group-hover:decoration-dashed group-hover:underline-offset-4 group-hover:decoration-1 sm:text-2xl"
+                >
+                    Where
+                </h3>
+                <div class="mt-1 leading-normal">Private event space in RiNo</div>
+                <div class="mt-3 leading-normal underline decoration-dashed underline-offset-4 decoration-1">3040 Blake St, Suite 131, Denver CO 80205</div>
             </div>
-        )
-    }
-    {
-        featuredPosts?.length > 0 && (
-            <div class="mb-16 sm:mb-24">
-                <h2 class="mb-12 text-xl font-serif italic sm:mb-16 sm:text-2xl">Writing</h2>
-                {featuredPosts.map((post) => (
-                    <PostPreview post={post} class="mb-10 sm:mb-12" headingLevel="h3" />
-                ))}
-                <div class="mt-12 sm:mt-16">
-                    <Button href="/blog">View All Posts</Button>
-                </div>
-            </div>
-        )
-    }
+            <span class="hidden font-serif italic opacity-0 transition group-hover:opacity-100 sm:inline-flex sm:gap-1 sm:items-center sm:shrink-0 mt-24">
+                Google Maps <ArrowRight class="fill-current w-4 h-4" />
+            </span>
+        </a>
+
+        <!-- Add Google Maps embed -->
+        <div class="mt-8 aspect-video">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3067.4976478021!2d-104.97764492346614!3d39.76467509478456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c7911d3ecc62f%3A0x5370abf4e60d0f8d!2s3040%20Blake%20St%20%23131%2C%20Denver%2C%20CO%2080205!5e0!3m2!1sen!2sus!4v1710252720209!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+    <div class="mb-16 sm:mb-24" id="rsvp">
+        <h2 class="mb-12 text-xl font-serif italic sm:mb-16 sm:text-2xl">RSVP information</h2>
+        <h3
+            class="text-xl leading-tight font-serif font-medium group-hover:underline group-hover:decoration-dashed group-hover:underline-offset-4 group-hover:decoration-1 sm:text-2xl"
+        >
+            Contact
+        </h3>
+        <div class="mt-1 leading-normal">Please RSVP with Elizabeth Barker (Zach's sister)</div>
+        <div class="mt-3 leading-normal">
+            <a href="tel:970-901-2620">text: <span class="underline decoration-dashed underline-offset-4 decoration-1">970-901-2620</span></a>
+        </div>
+        <div class="mt-3 leading-normal">
+            <a href="mailto:libby.capshaw@gmail.com"
+                >email: <span class="underline decoration-dashed underline-offset-4 decoration-1">libby.capshaw@gmail.com</span></a
+            >
+        </div>
+    </div>
+    <div class="mb-16 sm:mb-24" id="gifts">
+        <h2 class="mb-12 text-xl font-serif italic sm:mb-16 sm:text-2xl">Gifts</h2>
+        <h3
+            class="text-xl leading-tight font-serif font-medium group-hover:underline group-hover:decoration-dashed group-hover:underline-offset-4 group-hover:decoration-1 sm:text-2xl"
+        >
+            A note on gifts
+        </h3>
+        <div class="mt-1 leading-normal">Gifts are appreciated but not expected</div>
+        <div class="mt-3 leading-normal">
+            <a href="tel:970-901-2620"
+                >We are registered with <span class="underline decoration-dashed underline-offset-4 decoration-1">Amazon</span> and <span
+                    class="underline decoration-dashed underline-offset-4 decoration-1">Babylist</span
+                >
+            </a>
+        </div>
+        <h3
+            class="mt-8 text-xl leading-tight font-serif font-medium group-hover:underline group-hover:decoration-dashed group-hover:underline-offset-4 group-hover:decoration-1 sm:text-2xl"
+        >
+            Books for baby
+        </h3>
+        <div class="mt-1 leading-normal">In lieu of a card, please consider giving a baby book.</div>
+        <div class="mt-3 leading-normal">Sign and share a special message inside!</div>
+    </div>
 </BaseLayout>
